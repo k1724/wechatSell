@@ -1,9 +1,11 @@
 package com.imocc.sell.service;
 
 import com.imocc.sell.dataobject.ProductInfo;
+import com.imocc.sell.dto.CarDTO;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 /**
@@ -25,8 +27,9 @@ public interface ProductService {
     ProductInfo save(ProductInfo productInfo);
 
     //加库存
+    void increaseStock(List<CarDTO> carDTOList);
 
     //减库存
-
+    void decreaseStock(List<CarDTO> carDTOList);
 
 }
