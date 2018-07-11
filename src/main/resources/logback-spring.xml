@@ -9,43 +9,43 @@
         </layout>
     </appender>
 
-    <!--<appender name="fileInfoLog" class="ch.qos.logback.core.rolling.RollingFileAppender">-->
-        <!--<filter class="ch.qos.logback.classic.filter.LevelFilter">-->
-            <!--<level>ERROR</level>-->
-            <!--<onMatch>DENY</onMatch>-->
-            <!--<onMismatch>ACCEPT</onMismatch>-->
-        <!--</filter>-->
-        <!--<encoder>-->
-            <!--<pattern>-->
-                <!--%msg%n-->
-            <!--</pattern>-->
-        <!--</encoder>-->
-        <!--&lt;!&ndash;滚动策略&ndash;&gt;-->
-        <!--<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">-->
-            <!--&lt;!&ndash;路径&ndash;&gt;-->
-            <!--<fileNamePattern>D:\sourcecode\wechatSell\log\info.%d.log</fileNamePattern>-->
-        <!--</rollingPolicy>-->
-    <!--</appender>-->
+    <appender name="fileInfoLog" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <filter class="ch.qos.logback.classic.filter.LevelFilter">
+            <level>ERROR</level>
+            <onMatch>DENY</onMatch>
+            <onMismatch>ACCEPT</onMismatch>
+        </filter>
+        <encoder>
+            <pattern>
+                %msg%n
+            </pattern>
+        </encoder>
+        <!--滚动策略-->
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <!--路径-->
+            <fileNamePattern>D:\sourcecode\wechatSell\log\info.%d.log</fileNamePattern>
+        </rollingPolicy>
+    </appender>
 
-    <!--<appender name="fileErrorLog" class="ch.qos.logback.core.rolling.RollingFileAppender">-->
-        <!--<filter class="ch.qos.logback.classic.filter.ThresholdFilter">-->
-            <!--<level>ERROR</level>-->
-        <!--</filter>-->
-        <!--<encoder>-->
-            <!--<pattern>-->
-                <!--%msg%n-->
-            <!--</pattern>-->
-        <!--</encoder>-->
-        <!--&lt;!&ndash;滚动策略&ndash;&gt;-->
-        <!--<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">-->
-            <!--&lt;!&ndash;路径&ndash;&gt;-->
-            <!--<fileNamePattern>D:\sourcecode\wechatSell\log\error.%d.log</fileNamePattern>-->
-        <!--</rollingPolicy>-->
-    <!--</appender>-->
+    <appender name="fileErrorLog" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+            <level>ERROR</level>
+        </filter>
+        <encoder>
+            <pattern>
+                %msg%n
+            </pattern>
+        </encoder>
+        <!--滚动策略-->
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <!--路径-->
+            <fileNamePattern>D:\sourcecode\wechatSell\log\error.%d.log</fileNamePattern>
+        </rollingPolicy>
+    </appender>
 
-    <!--<root level="info">-->
-        <!--<appender-ref ref="consoleLog" />-->
-        <!--<appender-ref ref="fileInfoLog"/>-->
-        <!--<appender-ref ref="fileErrorLog"/>-->
-    <!--</root>-->
+    <root level="info">
+        <appender-ref ref="consoleLog" />
+        <appender-ref ref="fileInfoLog"/>
+        <appender-ref ref="fileErrorLog"/>
+    </root>
 </configuration>
