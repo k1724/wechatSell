@@ -1,8 +1,9 @@
 package com.imocc.sell.dto;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.imocc.sell.dataobject.OrderDetail;
-import com.imocc.sell.enums.OrderStatusEnum;
-import com.imocc.sell.enums.PayStatusEnum;
+import com.imocc.sell.utils.serializer.Date2LongSerializer;
 import lombok.Data;
 import org.springframework.data.annotation.Transient;
 
@@ -15,6 +16,8 @@ import java.util.List;
  * @date 2018-7-11
  */
 @Data
+//@JsonSerialize(include = JsonSerialize.Inclusion.NON_NULL)
+//@JsonInclude(JsonInclude.Include.NON_NULL)
 public class OrderDTO {
 
     /**
@@ -44,9 +47,11 @@ public class OrderDTO {
     private Integer payStatus ;
 
     /** 创建时间 */
+    @JsonSerialize(using = Date2LongSerializer.class)
     private Date createTime;
 
     /** 更新时间 */
+    @JsonSerialize(using = Date2LongSerializer.class)
     private Date updateTime;
 
     /** 订单明细 */
