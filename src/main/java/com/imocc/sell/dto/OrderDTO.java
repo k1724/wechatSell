@@ -1,8 +1,12 @@
 package com.imocc.sell.dto;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.imocc.sell.dataobject.OrderDetail;
+import com.imocc.sell.enums.OrderStatusEnum;
+import com.imocc.sell.enums.PayStatusEnum;
+import com.imocc.sell.utils.EnumUtil;
 import com.imocc.sell.utils.serializer.Date2LongSerializer;
 import lombok.Data;
 import org.springframework.data.annotation.Transient;
@@ -57,5 +61,15 @@ public class OrderDTO {
     /** 订单明细 */
     @Transient
     private List<OrderDetail> orderDetailList;
+
+    @JsonIgnore
+    public OrderStatusEnum getOrderStatusEnum() {
+        return EnumUtil.getByCode(orderStatus, OrderStatusEnum.class);
+    }
+
+    @JsonIgnore
+    public PayStatusEnum getPayStatusEnum() {
+        return EnumUtil.getByCode(payStatus, PayStatusEnum.class);
+    }
 
 }
