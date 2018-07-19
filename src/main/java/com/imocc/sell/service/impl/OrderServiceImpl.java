@@ -28,6 +28,7 @@ import org.springframework.util.CollectionUtils;
 
 import java.math.BigDecimal;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
@@ -99,8 +100,13 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     public OrderDTO findOne(String orderId) {
-
-        OrderMaster orderMaster = orderMasterRepository.findById(orderId).get();
+        OrderMaster orderMaster = null;
+        Optional<OrderMaster> orderById = orderMasterRepository.findById(orderId);
+        if(orderById.isPresent()){
+            orderMaster = orderById.get();
+        }else{
+            throw new SellException(ResultEnum.ORDER_NOT_EXIST);
+        }
         if(orderMaster == null) {
             throw new SellException(ResultEnum.ORDER_NOT_EXIST);
         }
